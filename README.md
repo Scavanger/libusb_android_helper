@@ -1,3 +1,4 @@
+![Push Validation](https://github.com/scavanger/libusb_android_helper/actions/workflows/dart.yml/badge.svg?event=push)
 # Libusb Android Helper
 
 libusb_android has the restriction on (unrooted) Android that no USB devices can be listed and found. 
