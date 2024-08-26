@@ -111,23 +111,29 @@ final DynamicLibrary _dynamicLibrary = () {
 }();
 final LibusbAndroidBindings _bindings = LibusbAndroidBindings(_dynamicLibrary);
 // ...
-if (await device.open()) {
+if (await device?.open()) {
     int retValue = 0;
     Pointer<Pointer<libusb_context>> context = calloc<Pointer<libusb_context>>();
-    Pointer<Pointer<libusb_device_handle>> dev_handle = calloc<Pointer<libusb_device_handle>>();
-    retValue = _bindings.libusb_set_option(ctx.value, libusb_option.LIBUSB_OPTION_NO_DEVICE_DISCOVERY);
+    Pointer<Pointer<libusb_device_handle>> deviceHandle = calloc<Pointer<libusb_device_handle>>();
+    
+    retValue = _bindings.libusb_set_option(context.value, libusb_option.LIBUSB_OPTION_NO_DEVICE_DISCOVERY);
     if (retValue < 0) {
         return;
     }
+
     retValue =_bindings.libusb_init(context);
     if (retValue < 0) {
         return;
     }
-    retValue = _bindings.libusb_wrap_sys_device(ctx.value, device.handle, dev_handle);
+
+    retValue = _bindings.libusb_wrap_sys_device(context.value, device!.handle, deviceHandle);
     if (retValue < 0) {
         return;
     }
-    // Work with dev_handle
+
+    Pointer<libusb_device> device = _bindings.libusb_get_device(deviceHandle.value);
+
+    // Work with device
 }
 // ...
 // Don't forget

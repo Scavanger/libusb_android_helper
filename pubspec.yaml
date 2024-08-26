@@ -1,7 +1,7 @@
 name: libusb_android_helper
 description: "A helper plugin for libusb_android to request USB permission and device handle."
 version: 1.0.0
-repository: https://github.com/scavanger/libusb_android_helper
+repository: https://github.com/Scavanger/libusb_android_helper
 
 environment:
   sdk: ^3.5.0
@@ -13,8 +13,6 @@ dependencies:
   plugin_platform_interface: ^2.0.2
 
 dev_dependencies:
-  flutter_test:
-    sdk: flutter
   flutter_lints: ^4.0.0
 
 flutter:
