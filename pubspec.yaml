@@ -1,6 +1,6 @@
 name: libusb_android_helper
 description: "A helper plugin for libusb_android to request USB permission and device handle."
-version: 1.0.0
+version: 1.0.1
 repository: https://github.com/Scavanger/libusb_android_helper
 
 environment:
