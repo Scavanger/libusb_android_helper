@@ -6,6 +6,13 @@ on:
 
 jobs:
   publish:
+    environment: 'pub.dev'
     permissions:
       id-token: write # Required for authentication using OIDC
-    uses: dart-lang/setup-dart/.github/workflows/publish.yml@v1
+    runs-on: ubuntu-latest
+    steps:
+    - name: 📚 Git Checkout
+      uses: actions/checkout@v4
+      with:
+        submodules: recursive
+    - uses: ./.github/actions/publish_flutter_package
